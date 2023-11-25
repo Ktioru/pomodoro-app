@@ -18,16 +18,24 @@ function Counter({time = 25, name}) {
   
 
 
-
+  function resetTimer() {
+    timer.current = false
+    minutes.current = time
+    seconds.current = 0
+    buttonColor.current = ""
+    setMessage("Start")
+    setScreenMinutes(time)
+    setScreenSeconds(0)
+  }
   
   function activateTimer() {
     if(timer.current) {
       timer.current = false
-      setMessage("Start")
+      setMessage("Resume")
       buttonColor.current = ""
     } else {
       timer.current = true
-      setMessage("Stop")
+      setMessage("Pause")
       buttonColor.current = "active"
     }
     
@@ -38,7 +46,9 @@ function Counter({time = 25, name}) {
     
     const watch = setInterval(() => {
       if(timer.current == true) {
-        if(seconds.current == 0) {
+        if(seconds.current == 0 && minutes.current == 0) {
+          resetTimer()
+        } else if(seconds.current == 0) {
           minutes.current--
           seconds.current = 59
           setScreenMinutes(minutes.current)
@@ -68,8 +78,11 @@ function Counter({time = 25, name}) {
     <div className='timerDiv'>
       <h2>{name} Time!</h2>
       <h2>{screenMinutes}:{seconds.current < 10 ? "0" : ""}{screenSeconds}</h2>
-
-      <button onClick={() => activateTimer()} className={buttonColor.current}>{message} Pomodoro Timer</button>
+        <div className='buttons'>
+          <button onClick={() => activateTimer()} className={buttonColor.current}>{message}</button>
+          <button onClick={() => resetTimer()} >Reset</button>
+        </div>
+      
     </div>
   )
 }

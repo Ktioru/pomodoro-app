@@ -2,6 +2,11 @@
     height: 100vh;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 
 body {
     background-color: #F5EBDC;
@@ -43,15 +48,33 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+
+    padding: 32px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 90%;
+    height: 20%;
+    
+}
+h2 {
+    font-size: 48px;
 }
 
 button {
+    
+    height: 100%;
     width: 90%;
-    height: 10%;
     border: 0;
     background-color: #BF1821;
     color: white;
-    font-size: 16px;
+    font-size: 32px;
     font-weight: bold;
 }
 
