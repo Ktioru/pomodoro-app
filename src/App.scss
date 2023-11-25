@@ -23,7 +23,7 @@ body {
         background-color: #BF1821;
         color: white;
         width: 100vw;
-        height: 10vh;
+        height: 8vh;
     }
     main {
         display: flex;
@@ -85,4 +85,8 @@ button:hover {
 
 .active {
     background-color: #2b7f3b;
+}
+
+a {
+    color: white;
 }
